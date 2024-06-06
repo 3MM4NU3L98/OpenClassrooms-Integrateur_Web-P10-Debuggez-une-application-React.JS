@@ -25,26 +25,20 @@ const Select = ({
     setCollapsed(true);
     // Appelle la fonction onChange avec la nouvelle valeur
     onChange(newValue);
+    console.log(onChange)
   };
-
-  console.log(selection)
-  console.log(onChange)
-  console.log(name)
-  console.log(titleEmpty)
-
-
-
-
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
-      {/* s'il y a un label alors le coder */}
+      {/* s'il y a un label alors le montrer */}
       {label && <div className="label">{label}</div>}
-
+      {/* le sélecteur */}
       <div className="Select">
         <ul>
+          {/* si le colapse est fermé alors on montre sinon cache */}
           <li className={collapsed ? "SelectTitle--show" : "SelectTitle--hide"}>
             {value || (!titleEmpty && "Toutes")}
           </li>
+          {/* si le colapse n'est pas fermé */}
           {!collapsed && (
             <>
               {!titleEmpty && (
