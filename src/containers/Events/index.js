@@ -15,7 +15,7 @@ const EventList = () => {
   const { data, error } = useData();
 
   // variable du type de prestation sélectionné
-  const [type, setType] = useState();
+  const [type, setType] = useState(null);
 
   // variable de la page en cours
   const [currentPage, setCurrentPage] = useState(1);
