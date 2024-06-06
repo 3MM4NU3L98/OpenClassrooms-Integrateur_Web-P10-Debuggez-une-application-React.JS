@@ -17,21 +17,24 @@ const Select = ({
   const [value, setValue] = useState(null);
   // Initialise le collapse de la sélection position fermé
   const [collapsed, setCollapsed] = useState(true);
-  // fonction 
+  // actions effectuées après le choix
   const changeValue = (newValue) => {
-    onChange();
+    // Enregistrenement de la nouvelle valeur
     setValue(newValue);
-    setCollapsed(newValue);
-
-
-    console.log(selection)
-    console.log(onChange)
-    console.log(name)
-    console.log(titleEmpty)
-
-
-
+    // Ferme la colaspe après la sélection
+    setCollapsed(true);
+    // Appelle la fonction onChange avec la nouvelle valeur
+    onChange(newValue);
   };
+
+  console.log(selection)
+  console.log(onChange)
+  console.log(name)
+  console.log(titleEmpty)
+
+
+
+
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
       {/* s'il y a un label alors le coder */}
