@@ -15,17 +15,16 @@ const EventList = () => {
   const { data, error } = useData();
 
   // variable du type de prestation sélectionné
-  const [type, setType] = useState();
+  const [type, setType] = useState(null);
 
   // variable de la page en cours
   const [currentPage, setCurrentPage] = useState(1);
 
-  console.log(type)
-  const filteredEvents = (
-    (!type
-      ? data?.events
-      : data?.events) || []
-  ).filter((event, index) => {
+  // Filtrage des événements par type
+  const filteredType = data?.events.filter(event => !type || event.type === type) || [];
+
+  // Pagination des événements filtrés
+  const filteredEvents = filteredType.filter((_, index) => {
     if (
       (currentPage - 1) * PER_PAGE <= index &&
       PER_PAGE * currentPage > index
