@@ -13,7 +13,16 @@ import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
-  const {last} = useData()
+  // récupération des données {events: Array(18), focus: Array(3)}
+  const { data } = useData()
+  // récupération du tableau {events: Array(18)}
+  const events = data?.events || [];
+  // Trouver l'événement le plus récent
+  const recentEvent = events.sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+
+
+  console.log('recentEvent', recentEvent);
+
   return <>
     <header>
       <Menu />
