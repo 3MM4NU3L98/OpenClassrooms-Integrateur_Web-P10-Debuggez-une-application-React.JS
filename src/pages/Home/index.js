@@ -20,9 +20,6 @@ const Page = () => {
   // Trouver l'événement le plus récent
   const recentEvent = events.sort((a, b) => new Date(b.date) - new Date(a.date))[0];
 
-
-  console.log('recentEvent', recentEvent);
-
   return <>
     <header>
       <Menu />
@@ -124,14 +121,16 @@ const Page = () => {
     </main>
     <footer className="row">
       <div className="col presta">
-        <h3>Notre derniére prestation</h3>
-        <EventCard
-          imageSrc={last?.cover}
-          title={last?.title}
-          date={new Date(last?.date)}
-          small
-          label="boom"
-        />
+        <h3>Notre dernière prestation</h3>
+        {recentEvent && (
+          <EventCard
+            imageSrc={recentEvent.cover}
+            title={recentEvent.title}
+            date={new Date(recentEvent.date)}
+            small
+            label="boom"
+          />
+        )}
       </div>
       <div className="col contact">
         <h3>Contactez-nous</h3>
