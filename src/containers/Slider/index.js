@@ -17,17 +17,16 @@ const Slider = () => {
   );
 
   // change la diapo toutes les 5 secondes
-  const nextCard = () => {
-    setTimeout(
-      () => setIndex(index < byDateDesc.length ? index + 1 : 0),
-      5000
-    );
-  };
-
-  // à chaque changement de la diapo
   useEffect(() => {
-    nextCard();
-  });
+    const intervalId = setInterval(() => {
+      setIndex((prevIndex) =>
+        prevIndex < byDateDesc.length - 1 ? prevIndex + 1 : 0
+      );
+    }, 5000);
+
+    // Nettoyage de l'intervalle
+    return () => clearInterval(intervalId);
+  }, [byDateDesc]);
 
   return (
     <div className="SlideCardList">
