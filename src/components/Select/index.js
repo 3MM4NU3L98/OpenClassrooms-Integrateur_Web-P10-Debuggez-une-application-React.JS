@@ -13,16 +13,30 @@ const Select = ({
   label,
   type = "normal",
 }) => {
-  const [value, setValue] = useState();
+  // Initialisation de la valeur à null
+  const [value, setValue] = useState(null);
+  // Initialise le collapse de la sélection position fermé
   const [collapsed, setCollapsed] = useState(true);
+  // fonction 
   const changeValue = (newValue) => {
     onChange();
     setValue(newValue);
     setCollapsed(newValue);
+
+
+    console.log(selection)
+    console.log(onChange)
+    console.log(name)
+    console.log(titleEmpty)
+
+
+
   };
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
+      {/* s'il y a un label alors le coder */}
       {label && <div className="label">{label}</div>}
+
       <div className="Select">
         <ul>
           <li className={collapsed ? "SelectTitle--show" : "SelectTitle--hide"}>
