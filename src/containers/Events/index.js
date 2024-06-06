@@ -20,20 +20,11 @@ const EventList = () => {
   // variable de la page en cours
   const [currentPage, setCurrentPage] = useState(1);
 
-  console.log(type)
-  const filteredEvents = (
-    (!type
-      ? data?.events
-      : data?.events) || []
-  ).filter((event, index) => {
-    if (
-      (currentPage - 1) * PER_PAGE <= index &&
-      PER_PAGE * currentPage > index
-    ) {
-      return true;
-    }
-    return false;
-  });
+  // Filtrage des événements par type
+  const filteredEvents = data?.events.filter(event => !type || event.type === type) || [];
+
+  // Pagination des événements filtrés
+  const paginatedEvents = filteredEvents.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
 
   // à chaque changement de type, on l'enregistre et eéinitialise la page courante
   const changeType = (evtType) => {
